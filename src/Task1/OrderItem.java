@@ -26,7 +26,7 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "\n\tTask1.OrderItem{" +
+        return "\n\tOrderItem{" +
                 "item=" + item +
                 ", amount=" + amount +
                 '}';

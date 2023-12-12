@@ -15,9 +15,6 @@ public class Product {
         this.expiredDate = expiredDate;
     }
 
-    public String getName() {
-        return name;
-    }
 
     public String getType() {
         return type;
@@ -29,7 +26,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Task1.Product{" +
+        return "Product{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", price=" + price +

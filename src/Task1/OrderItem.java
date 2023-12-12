@@ -16,6 +16,9 @@ public class OrderItem {
     public int getAmount() {
         return amount;
     }
+    public int getCost() {
+        return item.getPrice() * amount;
+    }
 
     public int hasMorePrice(OrderItem o) {
         return item.hasMorePrice(o);

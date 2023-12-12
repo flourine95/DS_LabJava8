@@ -18,18 +18,6 @@ public class Order {
         this.items = items;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getCustomer() {
-        return customer;
-    }
-
-    public String getEmployee() {
-        return employee;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -39,16 +27,12 @@ public class Order {
     }
 
     public int getCost() {
-        int res = 0;
-        for (OrderItem item : items) {
-            res += item.getAmount() * item.getItem().getPrice();
-        }
-        return res;
+        return items.stream().mapToInt(OrderItem::getCost).sum();
     }
 
     @Override
     public String toString() {
-        return "\nTask1.Order{" +
+        return "\nOrder{" +
                 "id='" + id + '\'' +
                 ", customer='" + customer + '\'' +
                 ", employee='" + employee + '\'' +

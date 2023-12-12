@@ -32,12 +32,13 @@ public class OrderManager {
     }
 
     public TreeSet<Order> ordersByCost() {
-        TreeSet<Order> sorted = new TreeSet<>((o1, o2) -> {
-            int byCost = o2.getCost() - o1.getCost();
-            int byDate = o1.getDate().compareTo(o2.getDate());
-            return byCost == 0 ? byDate : byCost;
-        });
-        sorted.addAll(orders);
-        return sorted;
+        return orders
+                .stream()
+                .collect(Collectors.toCollection(
+                        () -> new TreeSet<>(
+                                Comparator
+                                        .comparing(Order::getCost, Comparator.reverseOrder())
+                                        .thenComparing(Order::getDate))
+                ));
     }
 }

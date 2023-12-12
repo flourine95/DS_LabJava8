@@ -8,9 +8,6 @@ public class Magazine extends Publication {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
 
     @Override
     public TypePublication getType() {

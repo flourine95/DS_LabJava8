@@ -41,24 +41,22 @@ public class PublicationManager {
     }
 
     public List<Publication> sortByTitleAndYearDesc() {
-        return new ArrayList<>(publications)
+        return publications
                 .stream()
-                .sorted(
-                        Comparator.comparing(Publication::getTitle)
-                                .thenComparing(Publication::getYearPublish)
-                                .reversed())
+                .sorted(Comparator
+                        .comparing(Publication::getTitle)
+                        .thenComparing(Publication::getYearPublish, Comparator.reverseOrder()))
                 .collect(Collectors.toList());
     }
 
     public Map<Integer, Integer> countPublicationsByYear() {
-        /*
-        Map<Integer, Integer> map = new HashMap<>();
-        publications.forEach(publication -> map.put(publication.getYearPublish(), map.getOrDefault(publication.getYearPublish(), 0) + 1));
-        return map;
-        */
         return publications
                 .stream()
-                .collect(Collectors.toMap(Publication::getYearPublish, p -> 1, Integer::sum, HashMap::new));
+                .collect(Collectors.toMap(
+                        Publication::getYearPublish,
+                        p -> 1,
+                        Integer::sum,
+                        HashMap::new));
     }
 
 }
